@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+body {
+  background-image: url("https://img.freepik.com/free-photo/abstract-smooth-orange-background-layout-designstudioroom-web-template-business-report-with-smooth-c_1258-54783.jpg");
+  background-repeat: repeat; /* try: no-repeat, repeat-x, repeat-y */
+  background-size: auto; /* or use 'cover' or 'contain' */
+  background-position: top left;
+  padding: 10px 40px;
+}
+
+h1 {
+  margin: 0;
+}
