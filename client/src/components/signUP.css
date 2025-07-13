@@ -311,6 +311,42 @@
   text-decoration: underline;
 }
 
+.expertise-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.expertise-option {
+  display: flex;
+  align-items: center;
+  background: #fff7ed;
+  border: 1.5px solid #ffa94d;
+  border-radius: 20px;
+  padding: 6px 14px 6px 8px;
+  font-size: 0.97em;
+  color: #c34d18;
+  cursor: pointer;
+  transition: background 0.2s, border 0.2s;
+  box-shadow: 0 1px 4px rgba(255, 169, 77, 0.08);
+  user-select: none;
+}
+
+.expertise-option input[type="checkbox"] {
+  accent-color: #ff9800;
+  margin-right: 7px;
+  width: 16px;
+  height: 16px;
+}
+
+.expertise-option:hover,
+.expertise-option input[type="checkbox"]:focus + span {
+  background: #ffe3c1;
+  border-color: #ff9800;
+}
+
 @media (max-width: 768px) {
   .signUpRoot .container {
     width: 98%;

@@ -3,9 +3,9 @@
   "name": "furious-repair-backend",
   "version": "1.0.0",
   "description": "Backend for Furious Repair authentication system",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon index.js",
     "dev": "nodemon server.js"
   },
   "dependencies": {

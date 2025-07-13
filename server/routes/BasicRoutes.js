@@ -90,7 +90,8 @@ router.put("/profile", requireAuth, async (req, res) => {
 // Create new issue (protected route)
 router.post("/issue", requireAuth, async (req, res) => {
   try {
-    const { deviceType, vehicleType, description, estimatedPrice, date } = req.body;
+    const { deviceType, vehicleType, description, estimatedPrice, date } =
+      req.body;
     const issue = new Issue({
       user: req.session.userId,
       deviceType,
@@ -110,7 +111,9 @@ router.post("/issue", requireAuth, async (req, res) => {
 // Get all issues for the logged-in user (protected route)
 router.get("/issues", requireAuth, async (req, res) => {
   try {
-    const issues = await Issue.find({ user: req.session.userId }).sort({ createdAt: -1 });
+    const issues = await Issue.find({ user: req.session.userId })
+      .sort({ createdAt: -1 })
+      .populate("repairer", "name"); // <-- populate repairer name
     res.json({ issues });
   } catch (error) {
     res.status(500).json({ message: "Server error" });

@@ -46,6 +46,26 @@ const SignUpLogin = () => {
     }));
   };
 
+  const checkRepairerAndRedirect = async () => {
+    try {
+      const res = await fetch("http://localhost:3001/api/repairer/me", {
+        credentials: "include",
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.isRepairer) {
+          localStorage.setItem(
+            "user",
+            JSON.stringify({ ...data, isRepairer: true })
+          );
+          window.location.href = "/repairer/repairs";
+        }
+      }
+    } catch (err) {
+      // Optionally handle error
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -89,7 +109,11 @@ const SignUpLogin = () => {
       localStorage.setItem("user", JSON.stringify(response.data.user));
       alert(isSignUp ? "Sign up successful! 🎉" : "Sign in successful! 👋");
       setFormData({ name: "", email: "", password: "", expertise: [] });
-      window.location.href = "/";
+      if (isRepairer) {
+        await checkRepairerAndRedirect();
+      } else {
+        window.location.href = "/";
+      }
     } catch (err) {
       const errorMessage =
         err.response?.data?.message || "An error occurred. Please try again.";
@@ -100,14 +124,17 @@ const SignUpLogin = () => {
   };
 
   const expertiseOptions = [
-    "Mobile Phones",
-    "Laptops",
+    "Mobile",
+    "Laptop",
+    "Tablet",
+    "Desktop",
+    "Smartwatch",
     "Home Appliances",
-    "Cars",
-    "Bikes",
-    "Scooters",
-    "Trucks",
-    "Electric Vehicles",
+    "Car",
+    "Bike",
+    "Scooter",
+    "Truck",
+    "Electric Vehicle (EV)",
     "Other",
   ];
 
@@ -170,23 +197,33 @@ const SignUpLogin = () => {
                   <label className="block font-semibold text-orange-900 mb-1">
                     Area of Expertise
                   </label>
-                  <select
-                    multiple
-                    name="expertise"
-                    value={formData.expertise}
-                    onChange={handleExpertiseChange}
-                    className="w-full p-2 rounded border border-orange-300 bg-white text-orange-800 font-medium"
-                    required
-                    disabled={loading}
-                  >
+                  <div className="expertise-group">
                     {expertiseOptions.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
+                      <label key={option} className="expertise-option">
+                        <input
+                          type="checkbox"
+                          name="expertise"
+                          value={option}
+                          checked={formData.expertise.includes(option)}
+                          onChange={(e) => {
+                            const checked = e.target.checked;
+                            setFormData((prev) => ({
+                              ...prev,
+                              expertise: checked
+                                ? [...prev.expertise, option]
+                                : prev.expertise.filter(
+                                    (exp) => exp !== option
+                                  ),
+                            }));
+                          }}
+                          disabled={loading}
+                        />
+                        <span>{option}</span>
+                      </label>
                     ))}
-                  </select>
+                  </div>
                   <small className="text-gray-500">
-                    Hold Ctrl (Windows) or Cmd (Mac) to select multiple.
+                    Select all that apply.
                   </small>
                 </div>
               )}

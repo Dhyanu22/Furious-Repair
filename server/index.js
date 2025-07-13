@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongo");
 const authRoutes = require("./routes/AuthRoutes");
 const basicRoutes = require("./routes/BasicRoutes");
+const repairerRoutes = require("./routes/RepairerRoutes");
 
 const app = express();
 
@@ -50,6 +51,7 @@ app.use(
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/users", basicRoutes);
+app.use("/api/repairer", repairerRoutes);
 
 // Health check route
 app.get("/", (req, res) => {

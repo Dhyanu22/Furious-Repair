@@ -124,9 +124,17 @@ router.get("/me", (req, res) => {
 // Repairer Sign Up
 router.post("/repairer/signup", async (req, res) => {
   try {
+    console.log("signup repairer : ", req.body); // <-- Add this line
+
     const { name, email, password, phone, expertise } = req.body;
+
     if (!name || !email || !password) {
       return res.status(400).json({ message: "All fields are required" });
+    }
+    if (password.length < 6) {
+      return res
+        .status(400)
+        .json({ message: "Password must be at least 6 characters" });
     }
     const existing = await Repairer.findOne({ email });
     if (existing) {

@@ -86,10 +86,8 @@ const RepairsList = () => {
                     : ""}
                 </div>
                 <div>
-                  <strong>Submitted:</strong>{" "}
-                  {repair.createdAt
-                    ? new Date(repair.createdAt).toLocaleString()
-                    : ""}
+                  <strong>Repairer:</strong>{" "}
+                  {repair.repairer?.name || "Not assigned"}
                 </div>
               </div>
 
