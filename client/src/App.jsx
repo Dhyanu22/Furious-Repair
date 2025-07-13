@@ -10,6 +10,8 @@ import Support from "./components/Support";
 import RepairerRepairsList from "./components/RepairerRepairsList";
 import SupportRepairer from "./components/SupportRepairer";
 import ClaimedIssueRepairer from "./components/ClaimedIssueRepairer";
+import ClaimedIssueChat from "./components/ClaimedIssueChat";
+import UserIssueChat from "./components/UserIssueChat";
 
 function App() {
   const user = JSON.parse(localStorage.getItem("user") || "{}");
@@ -32,7 +34,9 @@ function App() {
           isRepairer ? <RepairerRepairsList /> : <Navigate to="/" replace />
         }
       />
-      <Route path="/repairer/claimed" element=<ClaimedIssueRepairer /> />
+      <Route path="/repairer/claimed" element={<ClaimedIssueRepairer />} />
+      <Route path="/repairer/claimed/:issueId" element={<ClaimedIssueChat />} />
+      <Route path="/repairs/:issueId" element={<UserIssueChat />} />
     </Routes>
   );
 }

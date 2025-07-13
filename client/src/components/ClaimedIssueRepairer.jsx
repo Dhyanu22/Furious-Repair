@@ -34,6 +34,10 @@ const ClaimedIssueRepairer = () => {
     navigate("/");
   };
 
+  const handleIssueClick = (issueId) => {
+    navigate(`/repairer/claimed/${issueId}`);
+  };
+
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
       <button
@@ -59,7 +63,8 @@ const ClaimedIssueRepairer = () => {
           {claimedIssues.map((issue) => (
             <div
               key={issue._id}
-              className="bg-white rounded-lg shadow-md p-6 border-l-4 border-orange-700"
+              className="bg-white rounded-lg shadow-md p-6 border-l-4 border-orange-700 cursor-pointer hover:bg-orange-50 transition"
+              onClick={() => handleIssueClick(issue._id)}
             >
               <div className="flex justify-between items-start mb-2">
                 <h3 className="text-xl font-bold text-gray-800">

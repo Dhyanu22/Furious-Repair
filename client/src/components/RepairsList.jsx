@@ -27,6 +27,11 @@ const RepairsList = () => {
     fetchRepairs();
   }, []);
 
+  const handleIssueClick = (issueId) => {
+    console.log("clicked");
+    navigate(`/repairs/${issueId}`); // <-- Change this line
+  };
+
   const handleBack = () => {
     navigate("/");
   };
@@ -57,6 +62,7 @@ const RepairsList = () => {
             <div
               key={repair._id}
               className="bg-white rounded-lg shadow-md p-6 border-l-4 border-orange-500"
+              onClick={() => handleIssueClick(repair._id)} // <-- FIXED HERE
             >
               <div className="flex justify-between items-start mb-2">
                 <h3 className="text-xl font-bold text-gray-800">
