@@ -1,5 +1,6 @@
 import { Home, User, Settings, Mail } from "lucide-react";
 import { useState } from "react";
+import logo from "../assets/logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,13 +18,9 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="heading flex justify-between mb-5">
+    <div className="custom-boxing heading flex justify-between mx-1 pl-5 pr-5 pt-1 pb-1 bg-orange-600">
       <div className="flex items-center space-x-3 ">
-        <img
-          src="/api/placeholder/40/40"
-          alt="Logo"
-          className="w-10 h-10 rounded"
-        />
+        <img src={logo} alt="Logo" className="w-10 h-10 rounded" />
         <div>
           <div>
             <h1 className="text-2xl font-bold text-orange-900">Furious</h1>

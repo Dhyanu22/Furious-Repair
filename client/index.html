@@ -3,9 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Repair</title>
+    <link rel="icon" href="./src/assets/logo.png" type="image/png" />
+    <title>Furious Repair</title>
+    <style>
+      .strip {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        width: 20px;
+        background-image: url("./src/assets/background-side-strip.jpg");
+        background-repeat: repeat-y;
+        background-size: 20px auto;
+        border: 2px solid #00000047;
+        border-top-width: 0;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .strip.left {
+        left: 16px;
+      }
+
+      .strip.right {
+        right: 16px;
+      }
+    </style>
   </head>
   <body>
+    <div class="strip left"></div>
+    <div class="strip right"></div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

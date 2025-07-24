@@ -8,7 +8,7 @@ const SupportRepairer = () => {
   };
 
   return (
-    <div className="p-6 bg-blue-50 min-h-screen">
+    <div className="p-6 bg-blue-50">
       <button
         onClick={handleBack}
         className="mb-4 px-4 py-2 bg-red-800 text-white rounded hover:bg-red-900 transition"

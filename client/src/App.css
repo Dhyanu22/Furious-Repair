@@ -1,13 +1,52 @@
 @import "tailwindcss";
 
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("./assets/bg.png");
+  background-size: cover;
+  background-position: top center;
+  transform: rotate(180deg);
+  z-index: -1;
+}
+
 body {
-  background-image: url("https://img.freepik.com/free-photo/abstract-smooth-orange-background-layout-designstudioroom-web-template-business-report-with-smooth-c_1258-54783.jpg");
-  background-repeat: repeat; /* try: no-repeat, repeat-x, repeat-y */
-  background-size: auto; /* or use 'cover' or 'contain' */
-  background-position: top left;
-  padding: 10px 40px;
+  position: relative;
+  min-height: 100vh;
+  padding-left: 35px;
+  padding-right: 35px;
+  background-color: #fff;
+  z-index: 0;
 }
 
 h1 {
   margin: 0;
+}
+
+.heading {
+  background-color: #db541c;
+}
+
+.repair-submit-btn {
+  background-color: #b6281c;
+}
+
+.secondary-text {
+  color: #a62500;
+}
+
+.custom-boxing {
+  border: 2px solid #00000047;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.box-bg {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.normal-color {
+  background-color: #f2be84;
 }
